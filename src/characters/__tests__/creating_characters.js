@@ -103,12 +103,14 @@ test('test validateName', () => {
     };
     expect(character).toEqual(expected_character);
     try {
-        new Character('a', CharacterTypes.BOWMAN)
+        new Character('a', CharacterTypes.BOWMAN);
+        throw new Error('test failed');
     } catch (e) {
         expect(e).toEqual(new Error('incorrect character name'));
     }
     try {
-        new Character('too many letters', CharacterTypes.BOWMAN)
+        new Character('too many letters', CharacterTypes.BOWMAN);
+        throw new Error('test failed');
     } catch (e) {
         expect(e).toEqual(new Error('incorrect character name'));
     }
@@ -127,6 +129,7 @@ test('test validateType', () => {
     expect(character).toEqual(expected_character);
     try {
         new Character('name', 'some type');
+        throw new Error('test failed');
     } catch (e) {
         expect(e).toEqual(new Error('incorrect character type'));
     }
